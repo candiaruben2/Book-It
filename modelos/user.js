@@ -2,6 +2,11 @@ mongoose = require('mongoose');
 
 var esquemaUser = mongoose.Schema({
 
+    userId:{
+        type: String,
+        required: true
+    },
+
     nombres: {
         type: String,
         required: true
@@ -18,8 +23,7 @@ var esquemaUser = mongoose.Schema({
     },
 
     correo: {
-        type: String,
-        required: true
+        type: String
     },
 
     password: {
@@ -33,10 +37,10 @@ var esquemaUser = mongoose.Schema({
 
 });
 
-var user = module.exports = mongoose.model('user', esquemaUser);
+var User = module.exports = mongoose.model('user', esquemaUser);
 
 module.exports.get = function (callback, limit){
 
-    user.find(callback).limit(limit);
+    User.find(callback).limit(limit);
 
 }

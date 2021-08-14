@@ -28,10 +28,15 @@ exports.new = function (req, res) {
 	
     var libro = new Libro();
     libro.title = req.body.title ? req.body.title : libro.title;
+    libro.bookId = req.body.bookId;
+    libro.userId = req.body.userId;
     libro.authors = req.body.authors;
-    libro.categories = req.body.categories;
-    libro.publishers = req.body.publishers;
-    libro.pageCant = req.body.pageCant;
+    libro.publication = req.body.publication;
+    libro.category = req.body.category;
+    libro.description = req.body.description;
+    libro.tags = req.body.tags;
+    libro.progress = req.body.progress;
+    libro.notes = req.body.notes;
 // save the libro and check for errors
     libro.save(function (err) {
         // Check for validation error
@@ -62,10 +67,15 @@ exports.update = function (req, res) {
         if (err)
             res.send(err);
         libro.title = req.body.title ? req.body.title : libro.nombre;
+        libro.bookId = req.body.bookId;
+        libro.userId = req.body.userId;
         libro.authors = req.body.authors;
-        libro.categories = req.body.categories;
-        libro.publishres = req.body.publishres;
-        libro.pageCant = req.body.pageCant;
+        libro.publication = req.body.publication;
+        libro.category = req.body.category;
+        libro.description = req.body.description;
+        libro.tags = req.body.tags;
+        libro.progress = req.body.progress;
+        libro.notes = req.body.notes;
 // save the libros and check for errors
         libro.save(function (err) {
         // Check for validation error

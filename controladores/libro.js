@@ -30,7 +30,7 @@ exports.new = function (req, res) {
     libro.title = req.body.title ? req.body.title : libro.title;
     libro.authors = req.body.authors;
     libro.categories = req.body.categories;
-    libro.publishres = req.body.publishres;
+    libro.publishers = req.body.publishers;
     libro.pageCant = req.body.pageCant;
 // save the libro and check for errors
     libro.save(function (err) {

@@ -7,22 +7,47 @@ var esquemaLibro = mongoose.Schema({
         required: true
     },
 
-    authors: {
+    bookId:{
         type: String,
         required: true
     },
 
-    categories: {
+    userId:{
         type: String,
         required: true
     },
 
-    publishers: {
+    author: {
+        type: String,
+        required: true
+    },
+
+    publication_date:{
+        type: String,
+        required: true
+    },
+
+    category: {
+        type: String,
+        required: true
+    },
+
+    description: {
         type: String,
         required: true        
     },
 
-    pageCant: {
+    tags:{
+        type: String,
+        required: true
+    },
+
+    progress:{
+        type: String,
+        required: true
+    },
+
+    notes: {
         type: String,
         required: true
     }

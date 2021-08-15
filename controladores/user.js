@@ -1,8 +1,8 @@
-Libro = require('../modelos/libro');
+User = require('../modelos/user');
 
 exports.index = function (req,res){
 	
-    Libro.get(function(err,libros){
+    User.get(function(err,users){
 	
 	if(err){
 		
@@ -13,8 +13,8 @@ exports.index = function (req,res){
 	}
 	res.json({
 		status:"success",
-		message:"libros listados correctamente",
-		data: libros	
+		message:"users listados correctamente",
+		data: users	
 		
 	});
 	
@@ -26,69 +26,71 @@ exports.index = function (req,res){
 
 exports.new = function (req, res) {
 	
-    var libro = new Libro();
-    libro.title = req.body.title ? req.body.title : libro.title;
-    libro.authors = req.body.authors;
-    libro.categories = req.body.categories;
-    libro.publishres = req.body.publishres;
-    libro.pageCant = req.body.pageCant;
-// save the libro and check for errors
-    libro.save(function (err) {
+    var user = new User();
+    user.userId = req.body.userId;
+    user.nombres = req.body.nombres;
+    user.apellidos = req.body.apellidos;
+    user.usuario = req.body.usuario;
+    user.password = req.body.password;
+    user.books = req.body.books;
+// save the user and check for errors
+    user.save(function (err) {
         // Check for validation error
         if (err)
             res.json(err);
         else
             res.json({
-                message: 'nuevo libro creado!',
-                data: libro
+                message: 'nuevo user creado!',
+                data: user
             });
     });
 };
 
 
 exports.view = function (req, res) {
-    Libro.findById(req.params.libro_id, function (err, libro) {
+    User.findById(req.params.user_id, function (err, user) {
         if (err)
             res.send(err);
         res.json({
-            message: 'cargando detalles del libro..',
-            data: libro
+            message: 'cargando detalles del user..',
+            data: user
         });
     });
 };
-// Handle update libro info
+// Handle update user info
 exports.update = function (req, res) {
-    Libro.findById(req.params.libro_id, function (err, libro) {
+    User.findById(req.params.user_id, function (err, user) {
         if (err)
             res.send(err);
-        libro.title = req.body.title ? req.body.title : libro.nombre;
-        libro.authors = req.body.authors;
-        libro.categories = req.body.categories;
-        libro.publishres = req.body.publishres;
-        libro.pageCant = req.body.pageCant;
-// save the libros and check for errors
-        libro.save(function (err) {
+        user.userId = req.body.userId;
+        user.nombres = req.body.nombres;
+        user.apellidos = req.body.apellidos;
+        user.usuario = req.body.usuario;
+        user.password = req.body.password;
+        user.books = req.body.books;
+// save the users and check for errors
+        user.save(function (err) {
         // Check for validation error
         if (err)
             res.json(err);
         else
             res.json({
-                message: 'creado nuevo libro!',
-                data: libro
+                message: 'creado nuevo user!',
+                data: user
             });
     });
     });
 };
-// Handle delete libro
+// Handle delete luser
 exports.delete = function (req, res) {
-    Libro.remove({
-        _id: req.params.libro_id
-    }, function (err, libro) {
+    LUser.remove({
+        _id: req.params.user_id
+    }, function (err, user) {
         if (err)
             res.send(err);
         res.json({
             status: "success",
-            message: 'libro borrado'
+            message: 'user borrado'
         });
     });
 };
